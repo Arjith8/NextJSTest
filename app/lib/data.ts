@@ -90,6 +90,7 @@ export async function fetchFilteredInvoices(
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
+    console.log(query)
     const invoices = await sql<InvoicesTable[]>`
       SELECT
         invoices.id,
@@ -110,6 +111,7 @@ export async function fetchFilteredInvoices(
       ORDER BY invoices.date DESC
       LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
     `;
+    console.log(invoices)
 
     return invoices;
   } catch (error) {
